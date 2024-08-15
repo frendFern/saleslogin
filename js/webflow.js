@@ -56,25 +56,7 @@
 
 
 
-  // login 
-var modal = document.getElementById("modalcontent");
-var btn = document.getElementById("togglemodal");
-var span = document.getElementsByClassName("close")[0];
-btn.onclick = function() {
-    modal.style.display = "block";
-}
 
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-
-}
   // packages/shared/render/plugins/BaseSiteModules/tram-min.js
   var require_tram_min = __commonJS({
     "packages/shared/render/plugins/BaseSiteModules/tram-min.js"() {

@@ -33,35 +33,12 @@
       Your browser does not support the video tag.
     </video>
   </div>
-  <div id="loginmodal" class="w-modal">
-    <div class="w-modal__content">
-
-        <form method="post" action="">
-
-            <h3 id="logo">Log In</h3>
-          
-            <label for="username">Username</label>
-            <input type="text" id="username" name="username" placeholder="Type in your username.." autocomplete="off" required />
-          
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" placeholder="Enter your password.." autocomplete="off" required />
-          
-            <a class="forgot" href="#">Forgot Password?</a>
-            <a class="register" href="#">Register</a>
-          
-            <input type="submit" name="submit" value="Log In" />
-          
-          </form>
-
-
-        <a href="#" class="w-modal__close">&times;</a>
-    </div>
-</div>
+  
   <div data-collapse="medium" data-animation="default" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navigation w-nav">
   
     <a href="index.html" aria-current="page" class="logo-link w-nav-brand w--current"><img src="images/frendai-logo.png" width="175" sizes="(max-width: 479px) 100vw, 175px" srcset="images/frendai-logo-p-500.png 500w, images/frendai-logo-p-800.png 800w, images/frendai-logo-p-1080.png 1080w, images/frendai-logo-p-1600.png 1600w, images/frendai-logo-p-2000.png 2000w, images/frendai-logo-p-2600.png 2600w, images/frendai-logo-p-3200.png 3200w, images/frendai-logo.png 3300w" alt="" class="logo-image"></a>
     <div data-node-type="commerce-cart-wrapper" data-open-product="" data-wf-cart-type="rightSidebar" data-wf-cart-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercecartwrapper cart">
-      <a href="#loginmodal" class="w-commerce-commercecartopenlink button cc-cart w-inline-block" role="button">
+      <a id="openModalBtn" class="w-commerce-commercecartopenlink button cc-cart w-inline-block" role="button">
         <div class="w-inline-block">Get Started</div>
         <div style="display:none" data-count-hide-rule="always" class="w-commerce-commercecartopenlinkcount">0</div>
       </a>
@@ -134,6 +111,35 @@
     </div>
     <!-- <img src="images/menu-icon_1menu-icon.png" width="22" alt="" class="menu-icon"> -->
   </div>
+
+  <div id="loginmodal" class="w-modal">
+    <div class="w-modal__content">
+        <div class="w-modal__header">
+          <img src="images/frendai-logo.png" width="175" sizes="(max-width: 479px) 100vw, 175px" srcset="images/frendai-logo-p-500.png 500w, images/frendai-logo-p-800.png 800w, images/frendai-logo-p-1080.png 1080w, images/frendai-logo-p-1600.png 1600w, images/frendai-logo-p-2000.png 2000w, images/frendai-logo-p-2600.png 2600w, images/frendai-logo-p-3200.png 3200w, images/frendai-logo.png 3300w" alt="" class="logo-image"> 
+            
+        </div>
+        <h4 id="logo">Log In</h4>
+        <div class="w-modal__subtitle">
+            Please input the right credentials
+        </div>
+
+        <!-- Form -->
+        <form method="post" action="">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Type in your username.." autocomplete="off" required />
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password.." autocomplete="off" required />
+            <a class="forgot" href="#">Forgot Password?</a>
+            <a class="register" href="#">Register</a>
+            <input type="submit" name="submit" value="Log In" />
+        </form>
+
+        <!-- Close Button -->
+        <a href="#" class="w-modal__close">&times;</a>
+    </div>
+</div>
+
+
   <div class="section cc-store-home-wrap">
     <div class="circle-real-2"></div>
     <div class="circle-real-3"></div>
@@ -435,6 +441,28 @@
         arrows: true,
       }).mount();
     });
+
+      var modal = document.getElementById("loginmodal");
+      var openModalBtn = document.getElementById("openModalBtn");
+      var closeModalBtn = document.querySelector(".w-modal__close");
+
+      // Open the modal
+      openModalBtn.addEventListener("click", function(event) {
+          event.preventDefault(); 
+          modal.classList.add("show");
+      });
+
+      // Close the modal when the close button is clicked
+      closeModalBtn.addEventListener("click", function(event) {
+          event.preventDefault(); 
+          modal.classList.remove("show");
+      });
+
+      window.addEventListener("click", function(event) {
+          if (event.target == modal) {
+              modal.classList.remove("show");
+          }
+      });
   </script>
 
   
